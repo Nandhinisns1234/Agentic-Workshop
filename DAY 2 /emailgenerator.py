@@ -59,13 +59,13 @@ if st.session_state["generated_email"]:
 
     # === PDF Download ===
     def create_pdf(text):
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.set_font("Arial", size=12)
-    for line in text.split("\n"):
+     pdf = FPDF()
+     pdf.add_page()
+     pdf.set_font("Arial", size=12)
+     for line in text.split("\n"):
         pdf.multi_cell(0, 10, line)
-    pdf_output = pdf.output(dest='S').encode('latin1')  # Get PDF as string and encode it
-    return BytesIO(pdf_output)
+     pdf_output = pdf.output(dest='S').encode('latin1')  # Get PDF as string and encode it
+     return BytesIO(pdf_output)
 
     pdf_buffer = create_pdf(st.session_state["generated_email"])
     st.download_button(
